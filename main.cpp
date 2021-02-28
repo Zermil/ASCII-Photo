@@ -29,8 +29,8 @@ int main (int argc, char* argv[])
     return 1;
   }
     
-  int newWidth = 100;
-  int newHeight = (((double)height / width) * newWidth);
+  const int newWidth = 100;
+  const int newHeight = (((double)height / width) * newWidth);
   
   // Allocate memory based on (width * height * num_of_channels)
   unsigned char* resized_image = (unsigned char*)malloc(newWidth * newHeight * 3);                   
