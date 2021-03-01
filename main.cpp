@@ -26,7 +26,7 @@ int main (int argc, char* argv[])
     
     std::cout << "Error reading file!\n";
     std::cin.get();
-    return 1;
+    exit(1);
   }
     
   const int newWidth = 100;
