@@ -32,8 +32,8 @@ int main (int argc, char* argv[])
   const int newWidth = 100;
   const int newHeight = (((double)height / width) * newWidth);
   
-  // Allocate memory based on (width * height * num_of_channels)
-  unsigned char* resized_image = (unsigned char*)malloc(newWidth * newHeight * 3);                   
+  // Allocate memory based on (width * height * num_of_channels) char is 1 byte so no need for sizeof()
+  unsigned char* resized_image = (unsigned char*)::operator new(newWidth * newHeight * 3);                   
   const char ASCII[11] = { '@', '#', '$', '%', '?', 
                            '*', '+', ';', ':', ',', '.' };
   
@@ -58,7 +58,8 @@ int main (int argc, char* argv[])
     std::cout << '\n';
   }
 
-  free(resized_image);
+  ::operator delete(resized_image, newWidth * newHeight * 3);
+  
   system("pause");
   return 0;
 }
